@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/test")
 public class TestController extends HttpServlet {
@@ -16,7 +17,9 @@ public class TestController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 //		var xxx = req.getParameter("aaa");
-		req.setAttribute("nickname", "xxx");
+		HttpSession session = req.getSession();
+		session.setAttribute("nickname2", "corn2");
+		req.setAttribute("nickname", "abc");
 		req.getRequestDispatcher("/index.jsp").forward(req, res);
 	}
 
